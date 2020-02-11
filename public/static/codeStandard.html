@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        ul li {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h3>2019年TCC-基于VUE前端代码规范</h3>
+    <h1><a name="_Toc524360624"></a><a name="_Toc15548219"></a>1.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 前端架构</h1>
+    <h2>1.1 前端技术栈</h2>
+    <p>Node.js&nbsp; &gt;=&nbsp; 6.0.0<br>NPM&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&gt;=&nbsp; 3.0.0<br>Vue&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&gt;=&nbsp; 2.6.10<br>vue-cli&nbsp; &gt;=&nbsp; 3.0<br>ES6</p>
+    <p>（1）vue-cli：Vue的脚手架工具，用于自动生成Vue项目的目录及文件。</p>
+    <p>（4）ES6：Javascript的新版本，ECMAScript6的简称。利用ES6我们可以简化我们的JS代码，同时利用其提供的强大功能来快速实现JS逻辑。</p>
+    <p>（5）NPM：node.js的包管理工具，用于同一管理我们前端项目中需要用到的包、插件、工具、命令等，便于开发和维护。</p>
+    <p>（6）webpack：一款强大的文件打包工具，可以将我们的前端项目文件同一打包压缩至js中，并且可以通过vue-loader等加载器实现语法转化与加载。</p>
+    <p>（7）Babel：一款将ES6代码转化为浏览器兼容的ES5代码的插件</p>
+    <h2><a name="_Toc15548221"></a><a name="_Toc524360626"></a>1.2 依赖</h2>
+    <ul>
+        <li>必备（根据当前最新版本进行依赖）：</li>
+    </ul>
+    <p>axios：基于Promise用于浏览器和nodejs的HTTP客户端，主要用于Ajax请求,&nbsp; 版本："^0.18.0"</p>
+    <p>vue-router：Vue提供的前端路由工具，利用其我们实现页面的路由控制，局部刷新及按需加载，构建单页应用，实现前后端分离,&nbsp; 版本： "^3.0.1"</p>
+    <p>vuex：Vue提供的状态管理工具，用于同一管理我们项目中各种数据的交互和重用，存储我们需要用到数据对象,&nbsp; 版本： "^3.1.0"</p>
+    <p>moment:&nbsp; 用于格式化日期 ，结合ant-desing-vue 的日期控件使用,&nbsp; 版本： "latest"</p>
+    <p>ant-design-vue：蚂蚁金服第三方组件库，提供开发所需的各种组件,&nbsp; 版本： "^1.3.8"</p>
+    <p>postcss-px2rem：将px转为rem的库，配合UI提供的页面使用,&nbsp; 版本： "^0.3.0"</p>
+    <ul>
+        <li>选配（根据当前最新版本进行依赖）：</li>
+    </ul>
+    <p>qrcode.vue：说明： 用于生成二维码; 版本："^1.6.1"</p>
+    <p>vue-json-excel：说明：将表格数据转化成EXCEL 文件导出; 版本："^0.2.98"</p>
+    <p>vuescroll：说明：用于美化滚动条; 版本： "^4.12.0"</p>
+    <p>xlsx：说明：用于解析xls、xlsx文件内容;&nbsp; 版本： "^0.14.3"</p>
+    <p>echarts：说明：用于前端显示图表内容; 版本： "^4.1.0"</p>
+    <h2><a name="_Toc15548222"></a>1.3 自定义组件</h2>
+    <h3><a name="_Toc15548223"></a>1.3.1 系统框架组件</h3>
+    <p>头部组件:tcc-head.vue</p>
+    <p>菜单组件:tcc-menu.vue ,tcc-menuItem</p>
+    <p>Tab组件：tcc-tab.vue</p>
+    <p>内容组件:tcc-content.vue</p>
+    <p>模块组件：Modular/index.js （用于同一设置变宽）</p>
+    <p>TITLE组件：Title/index.js (用于同一表格头部标题)</p>
+    <h3><a name="_Toc15548224"></a>1.3.2 业务全局组件</h3>
+    <p>初始页及头部查询组件：comprehensiveCondition.vue</p>
+    <p>通用查询组件：globalCondition.vue</p>
+    <p>营业树组件： bussinessTree.vue</p>
+    <p>营业扎帐查询组件：conditionThe.vue</p>
+    <p>托收管理查询组件：condition.vue</p>
+    <h3><a name="_Toc15548225"></a>1.3.3 业务局部组件</h3>
+    <p>帐务中心组件：financial_center</p>
+    <p>客户中心组件：customer_center</p>
+    <h2><a name="_Toc15548226"></a>1.4 公共服务</h2>
+    <h3><a name="_Toc15548227"></a>1.4.1 公共方法</h3>
+    <p>commonService.js 公共方法分装</p>
+    <p>permission.js&nbsp; 权限控制</p>
+    <h3><a name="_Toc15548228"></a>1.4.2 公共工具</h3>
+    <p>工具类统一定义放入tools文件夹下 ，命名已小写字母开头，多英文采用驼峰模式，命名应该通俗易懂</p>
+    <p>export.js 导出工具类</p>
+    <p>print.js 打印工具类</p>
+    <p>watermark.js 水印工具类</p>
+    <p>fomatterDate.js 格式化日期</p>
+    <p>stringUtils.js 字符串处理</p>
+    <p>httpConfig.js 处理请求服务</p>
+    <p>regular.js&nbsp; 正则表达式验证</p>
+    <p>analysisXls.js 解析</p>
+    <p>excel文件</p>
+    <p>qrcode.js 生成二维</p>
+    <p>码cros.js 防止cros攻击请求预处理文件</p>
+    <h2><a name="_Toc15548229"></a><a name="_Toc524360627"></a>1.5 项目架构</h2>
+    <div style="background: rgba(1,1,1,0.1)">
+        <p>|-----node_modules&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //模块包</p>
+        <p>|-----dist &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //打包后的项目目录，用于服务器部署</p>
+        <p>|-----public/static &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //外部静态资源，打包时不做编译</p>
+        <p>|-----src &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //源码文件</p>
+        <p>|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; |----- assets&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //公用静态资源，打包时有做编译</p>
+        <p>|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |-----fonts&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //字体</p>
+        <p>|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |-----files&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //文件</p>
+        <p>|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |-----images&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //图片</p>
+        <p>|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |-----tools&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //公用工具方法</p>
+        <p>|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |-----filter&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //Vue过滤器</p>
+        <p>|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |-----mixins&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //Vue混入方法</p>
+        <p>|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; |-----components &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //Vue组件</p>
+        <p>|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |-----(&hellip;&hellip;)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //按业务命名文件夹</p>
+        <p>|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |-----(&hellip;&hellip;)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //按业务命名文件夹</p>
+        <p>|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; |-----views&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //Vue页面</p>
+        <p>|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |-----(&hellip;&hellip;)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //按业务命名文件夹</p>
+        <p>|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |-----(&hellip;&hellip;)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //按业务命名文件夹</p>
+        <p>|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; |-----router&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //Vue路由配置</p>
+        <p>|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; |-----store&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //VueX状态配置</p>
+        <p>|-----package.json&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //定义项目所需模块以及项目配置信息</p>
+        <p>|-----vue.config.js &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //Vue Cli 配置文件</p>
+        <p>&nbsp;</p>
+    </div>
+    <h2><a name="_Toc15548230"></a><a name="_Toc524360628"></a>1.6 项目标准</h2>
+    <h3><a name="_Toc15548231"></a><a name="_Toc524360629"></a>1.6.1 assets标准</h3>
+    <p>assets目录中的文件会被webpack处理解析为模块依赖，只支持相对路径形式。</p>
+    <p>建议使用该文件夹存放需要和项目一起编译的静态资源</p>
+    <h3><a name="_Toc15548232"></a>1.6.2 public/static标准</h3>
+    <p>public/static 目录下的文件并不会被Webpack处理：它们会直接被复制到最终的打包目录（默认是dist/static）下。必须使用绝对路径引用这些文件，这个取决于你vue.config.js中publicPath的配置，默认的是&rdquo;/&rdquo;。</p>
+    <p>建议使用该文件夹存放外部非业务静态资源</p>
+    <h3><a name="_Toc15548233"></a>1.6.3 components标准</h3>
+    <div style="background: rgba(1,1,1,0.1)">
+        <p>|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; |-----components &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //Vue组件</p>
+        <p>|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |-----(gropuA&hellip;&hellip;)&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //按业务命名文件夹</p>
+        <p>|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |-----(gropuB&hellip;&hellip;)&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //按业务命名文件夹</p>
+    </div>
+    <h3><a name="_Toc15548234"></a>1.6.4 views标准</h3>
+    <div style="background: rgba(1,1,1,0.1)">
+        <p>|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; |----- views&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //Vue页面</p>
+        <p>|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |-----(groupA&hellip;&hellip;)&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //按业务命名文件夹</p>
+        <p>|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |-----(groupB&hellip;&hellip;)&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //按业务命名文件夹</p>
+    </div>
+    <p>views 目录用于存放页面，该文件夹下按业务模块分不同文件夹，便于日后多项目组协同开发</p>
+    <h3><a name="_Toc15548235"></a>1.6.5 router标准</h3>
+    <div style="background: rgba(1,1,1,0.1)">
+        <p>|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; |----- router&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //Vue路由配置</p>
+        <p>|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |-----index.js&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //路由入口文件</p>
+        <p>|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |-----(&hellip;&hellip;)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //按业务命名文件夹</p>
+        <p>|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |-----(&hellip;&hellip;)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //按业务命名文件夹</p>
+    </div>
+    <p>router目录用于存放Vue路由配置，该文件夹下除了入口文件以外，按业务模块分不同文件，便于日后多项目组协同开发</p>
+    <h3><a name="_Toc15548236"></a>1.6.6 store标准</h3>
+    <div style="background: rgba(1,1,1,0.1)">
+        <p>|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; |----- store&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //Vuex状态配置</p>
+        <p>|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |-----index.js&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //Vuex入口文件</p>
+        <p>|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |-----(&hellip;&hellip;)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //按业务命名文件夹</p>
+        <p>|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |-----(&hellip;&hellip;)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //按业务命名文件夹</p>
+    </div>
+    <p>views目录用于存放Vuex状态配置，该文件夹下除了入口文件以外，按业务模块分不同文件，便于日后多项目组协同开发</p>
+    <p><strong><br /> </strong></p>
+    <h1><a name="_Toc524360631"></a><a name="_Toc15548237"></a>2.编码规范</h1>
+    <h2><a name="_Toc15548239"></a>2.1 文件</h2>
+    <h3><a name="_Toc15548240"></a><a name="_Toc524360633"></a>2.1.1 文件夹命名规则</h3>
+    <p>图片存放文件夹统一命名：images</p>
+    <p>业务组件文件夹统一命名：group</p>
+    <h3><a name="_Toc15548241"></a><a name="_Toc524360634"></a>2.1.2 图片命名规则</h3>
+    <p>图片名称要详细，&ldquo;_&rdquo;区分多个字母，禁止出现大写字母，禁止出现单个字母、或者数字区分。</p>
+    <p>例： product_add.png&nbsp;&nbsp;&nbsp;&nbsp; product_add_hover.png</p>
+    <h2><a name="_Toc15548242"></a><a name="_Toc524360635"></a>2.2 VUE规范</h2>
+    <p>在使用VUE开发项目的情况下，为了避免有关JavaScript或HTML中的冲突，对各项命名进行规范处理，同时尽量不要在VUE中使用jQuery操作DOM。</p>
+    <h3>2.2.1 &nbsp;<a name="_Toc15548243"></a>Vue中html元素操作</h3>
+    <p>使用ref，例如</p>
+    <div style="background: rgba(1,1,1,0.1)">
+        <p>正：</p>
+        <p>&lt;span class="ffued-nav-bar" ref="navBar" style=""&gt;&lt;/span&gt;</p>
+        <p>function _testFuncion () {</p>
+        <p>&nbsp; &nbsp; this.$parent.$parent.$refs.navBar.style.top = 0 + 'px'</p>
+        <p>}</p>
+        <p><span style="color: #ff0000;">注意：项目中禁止使用jquery对元素进行操作</span></p>
+        <p>反：<a name="_Toc524360636"></a>&lt;span class="ffued-nav-bar" id="navBar" style=""&gt;&lt;/span&gt;</p>
+        <p>function _testFuncion () {</p>
+        <p>&nbsp; &nbsp; Jquery(&lsquo;#navBar&rsquo;).style.top = 0 + 'px'</p>
+        <p>}</p>
+    </div>
+    <h3>2.2.2 &nbsp;<a name="_Toc15548244"></a>Vue文件代码块顺序</h3>
+    <div style="background: rgba(1,1,1,0.1)">
+        <p><strong>正</strong><strong>:</strong></p>>
+        <p>export default<strong>&nbsp;{</strong></p>
+        <p>&nbsp; &nbsp; &nbsp; &nbsp; name，&nbsp; //组件名称 同文件</p>
+        <p>&nbsp; &nbsp; &nbsp; &nbsp; components， //外部组件引入</p>
+        <p>&nbsp; &nbsp; &nbsp; &nbsp; props，&nbsp; //组件外部属性</p>
+        <p>&nbsp; &nbsp; &nbsp; &nbsp; data，&nbsp; // 组件内部属性</p>
+        <p>&nbsp; &nbsp; &nbsp; &nbsp; computed， //计算属性<strong>}</strong></p>
+        <p><strong>反</strong><strong>:</strong></p>
+        <p>export default<strong>&nbsp;{</strong></p>
+        <p>&nbsp; &nbsp; &nbsp; &nbsp; components， //外部组件引入</p>
+        <p>&nbsp; &nbsp; &nbsp; &nbsp; props，&nbsp; //组件外部属性</p>
+        <p>&nbsp; &nbsp; &nbsp; &nbsp; data，&nbsp; // 组件内部属性</p>
+        <p>&nbsp; &nbsp; &nbsp; &nbsp; computed， //计算属性<strong>}</strong></p>
+    </div>
+    <h3>2.2.3 &nbsp;<a name="_Toc15548245"></a><a name="_Toc524360637"></a>Vue script 模块内容顺序(建议)</h3>
+    <p>name&nbsp; //组件名称</p>
+    <p>components //外部组件引入</p>
+    <p>mixins // 混入方法</p>
+    <p>props&nbsp; //组件外部属性</p>
+    <p>data&nbsp; // 组件内部属性</p>
+    <p>computed //计算属性</p>
+    <p>methods //组件方法</p>
+    <p>created、mounted、updated、activated、destroyed //生命周期方法</p>
+    <p>watch //监听属性</p>
+    <h3>2.2.4 &nbsp;Vue组件定义规范</h3>
+    <p>&nbsp;&nbsp; 在定义组件时必须定义组件名称，Vue文件已大写字母开头,多字母采用驼峰格式</p>
+    <div style="background: rgba(0,0,0,0.1)">
+        <p><strong>正</strong><strong>:</strong></p>
+        <p>export default<strong>&nbsp;{</strong></p>
+        <p>&nbsp; &nbsp; name，&nbsp; //组件名称 同文件</p>
+        <p>&nbsp; &nbsp; components， //外部组件引入</p>
+        <p>&nbsp; &nbsp; props，&nbsp; //组件外部属性</p>
+        <p>&nbsp; &nbsp; data，&nbsp; // 组件内部属性</p>
+        <p>&nbsp; &nbsp; computed， //计算属性<strong>}</strong></p>
+        <p><strong>反</strong><strong>:</strong></p>
+        <p>export default<strong>&nbsp;{</strong></p>
+        <p>&nbsp; &nbsp; components， //外部组件引入</p>
+        <p>&nbsp; &nbsp; props，&nbsp; //组件外部属性</p>
+        <p>&nbsp; &nbsp; data，&nbsp; // 组件内部属性</p>
+        <p>&nbsp; &nbsp; computed， //计算属性<strong>}</strong></p>
+    </div>
+    <h3>2.2.5 &nbsp;<a name="_Toc15548246"></a><a name="_Toc524360638"></a>components规范</h3>
+    <p>命名：组件名称应始终为多字,这可以防止与现有和未来HTML元素冲突，因为所有HTML元素都是单个单词。</p>
+    <p><strong>正</strong><strong>:</strong></p>
+    <p><strong>Vue.component(</strong>'todo-item'<strong>, {})</strong></p>
+    <p>export default<strong>&nbsp;{</strong><strong>&nbsp;&nbsp;</strong>name<strong>:&nbsp;</strong>'TodoItem'<strong>,</strong><strong>}</strong></p>
+    <p><strong>注意：使用</strong><strong>component&nbsp;</strong><strong>定义组件时命名</strong>&nbsp;<strong>使用</strong><strong>&nbsp;a-b&nbsp;</strong><strong>（</strong>todo-item<strong>），在</strong><strong>VUE</strong><strong>文件中命名使用</strong><strong>AB</strong><strong>（</strong>TodoItem<strong>）形式</strong></p>
+    <p><strong>反</strong><strong>:</strong></p>
+    <p><strong>Vue.component(</strong>'todo'<strong>, {})</strong>export default<strong>&nbsp;{</strong><strong>&nbsp;&nbsp;</strong>name<strong>:&nbsp;</strong>'Todo'<strong>,</strong><strong>}</strong></p>
+    <h3>2.2.6 &nbsp;<a name="_Toc15548247"></a><a name="_Toc524360639"></a>props规范</h3>
+    <p>定义尽可能的详细，type、default等</p>
+    <div style="background: rgba(1,1,1,0.1)">
+        <p>正：</p>
+        <p>Props：{status: String}</p>
+        <p>props:{&nbsp;&nbsp;</p>
+        <p>&nbsp; &nbsp; data: {&nbsp; &nbsp;</p>
+        <p>&nbsp; &nbsp; &nbsp; &nbsp; type: Object,&nbsp;&nbsp;</p>
+        <p>&nbsp; &nbsp; &nbsp; &nbsp; default: funciton () {&nbsp;&nbsp;&nbsp;&nbsp;</p>
+        <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return {}</p>
+        <p>&nbsp; &nbsp; &nbsp; &nbsp; },</p>
+        <p>&nbsp; &nbsp; &nbsp; &nbsp; required: true }}</p>
+        <p>反：</p>
+        <p>props: ['status']</p>
+    </div>
+    <p>注意：type：Object,String,Number,Array,Function,Boolean,symbol</p>
+    <h3>2.2.7 &nbsp;<a name="_Toc15548248"></a><a name="_Toc524360640"></a>data规范</h3>
+    <p>该值必须是返回对象的函数</p>
+    <div style="background: rgba(1,1,1,0.1)">
+        <p>正</p>
+        <p>Vue.component('some-comp', {&nbsp;</p>
+        <p>&nbsp; &nbsp; data: function () {&nbsp;&nbsp;&nbsp;</p>
+        <p>&nbsp; &nbsp; &nbsp; &nbsp; return {&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; foo: 'bar'&nbsp;&nbsp;&nbsp; }&nbsp;</p>
+        <p>&nbsp; &nbsp; }})</p>
+        <p>export default {&nbsp;</p>
+        <p>&nbsp; &nbsp; data () {&nbsp;&nbsp;&nbsp;</p>
+        <p>&nbsp; &nbsp; &nbsp; &nbsp; return {&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; foo: 'bar'&nbsp;&nbsp;&nbsp; }&nbsp;</p>
+        <p>&nbsp; &nbsp; }}new Vue({&nbsp; data: {&nbsp;&nbsp;&nbsp; foo: 'bar'&nbsp; }})</p>
+        <p>反：</p>
+        <p>Vue.component('some-comp', {&nbsp;</p>
+        <p>&nbsp; &nbsp; data: {&nbsp;&nbsp;&nbsp; foo: 'bar'&nbsp; }</p>
+        <p>})</p>
+        <p>export default {&nbsp; data: {&nbsp;&nbsp;&nbsp; foo: 'bar'&nbsp; }}</p>
+    </div>
+    <h3>2.2.8 &nbsp;<a name="_Toc15548249"></a><a name="_Toc524360641"></a>methods规范</h3>
+    <p>命名：首字母小写或已下划线开头、驼峰式</p>
+    <p>正methods: {&nbsp;&nbsp;&nbsp; getName() {},_getName:function(){}}</p>
+    <p>反：methods: {&nbsp;&nbsp;&nbsp; GetName() {},123Name:function(){}}</p>
+    <h3>2.2.9 &nbsp;禁止在vue文件中定义常量</h3>
+    <img src="docImg1.png">
+    <p>应该使用js文件去定义常量，然后再引入</p>
+    <h3>2.2.10 对象获取属性&nbsp;</h3>
+    <p>使用ES6的解构模式去解析参数</p>
+    <p>let obj = {name: &lsquo;ahpome&rsquo;,age: 12, department: &lsquo;TCC&rsquo;}正：let {name , age , department }= obj</p>
+    <p>反：let name = obj.name&nbsp;&nbsp;&nbsp; let age = obj.namelet department = obj.department</p>
+    <h3>2.2.11 使用后端返回的参数时因进行校验</h3>
+    <p>在接受后台返回的数据并引用数据时要进行数据校验</p>
+    <p>let obj = {name: &lsquo;ahpome&rsquo;,age: 12, department: &lsquo;TCC&rsquo;}正：let {name , age , department }= obj &nbsp;&nbsp;&nbsp;&nbsp;If(name &amp;&amp; name.indexOf(&lsquo;ahpome&rsquo;&rsquo;)&gt; -1) {}</p>
+    <p>反：let {name , age , department }= obj &nbsp;&nbsp;&nbsp;&nbsp;If(name.indexOf(&lsquo;ahpome&rsquo;&rsquo;)&gt; -1) {}</p>
+    <h3><a name="_Toc15548250"></a><a name="_Toc524360642"></a>2.2.12 style规范</h3>
+    <p>所有页面style使用scoped</p>
+    <p>Vue文件内的style统一使用sass或less语法编写</p>
+    <p>正：&lt;style lang="scss" scope&gt; 或 &lt;style&nbsp; scope&gt;</p>
+    <p>反：&lt;style lang="scss"&gt; 或 &lt;style&gt;注意：在单页面中style 一定要使用scope作用域，否则会影响到全局的样式</p>
+    <h3><a name="_Toc15548251"></a><a name="_Toc524360643"></a>2.2.13 生命周期规范</h3>
+    <p>created:调用加载画面前的ajax请求</p>
+    <p>mounted:调用画面加载完的ajax请求</p>
+    <h3><a name="_Toc15548253"></a><a name="_Toc524360645"></a>2.2.14 命名规范</h3>
+    <h3><a name="_Toc15548254"></a><a name="_Toc524360646"></a>2.2.15 代码样式</h3>
+    <p>封装方法后的括号前加空格，例如getUserId (index) {}</p>
+    <p>正： _getUserInfo () {}</p>
+    <p>反： _getUserInfo(){}注意： 括号前后加上空格</p>
+    <p>调用方法不加空格，例如getUserId(index)</p>
+    <p>正： _getUserInfo(userId)反： _getUserInfo (userId)注意： 调用时不加任何空格</p>
+    <p>代码换行不加分号&ldquo;；&rdquo;</p>
+    <p>正：let name&nbsp; = &lsquo;ahpome&rsquo;&nbsp;&nbsp;&nbsp; let age = 23</p>
+    <p>反：let name = &lsquo;ahpome&rsquo;;&nbsp;&nbsp;&nbsp; let age = 23;注意： 调用时不加任何空格</p>
+    <p>在if条件中使用是否相等时使用恒等判断</p>
+    <p>正：if(age === 23)</p>
+    <p>反：if(age == 23)注意： 判断符号前后要加空格</p>
+    <p>具体标准以ESLint为准</p>
+    <h3><a name="_Toc524360647"></a><a name="_Toc15548255"></a>2.2.16 this缓存</h3>
+    <p>当需要缓存this时必须使用_this 或 _$this变量进行缓存</p>
+    <p>例：let _this= this; 或 let _$this= this</p>
+    <h3><a name="_Toc15548256"></a>2.2.17 方法及变量声明规范</h3>
+    <p>变量：首字母小写、驼峰式命名</p>
+    <p>正： let name, let myName , let _name， let _myName, let _$name 等</p>
+    <p>反： let Name, let MyName , let Myname ,let myname, let 123Name , let name123 等注意： 变量名称禁止以数字开头或结尾，大写字母开头,不使用var进行变量定义</p>
+    <p>常量：全字母大写、&ldquo;_&rdquo;分隔字母</p>
+    <p>正： const DATETYPE, DATE_TYPE 等</p>
+    <p>反： const dateType ,date_type注意： 常量全部使用大写字母</p>
+    <p>类：首字母大写、驼峰式命名</p>
+    <p>正： class&nbsp; Person, PersonBaseInfo</p>
+    <p>反： class persion, personBaseinfo, 123person, _person注意： 禁止使用小写字母或数字，下划线开头</p>
+    <p>methods中的监听事件方法（建议）：以_handle开头</p>
+    <p>正： _handleClickUser</p>
+    <p>反： handleClickUser</p>
+    <p>methods中的请求后端方法（建议）：请求方式+功能名称，驼峰式</p>
+    <p>正： _getUserInfo</p>
+    <p>反： getuserinfo 或 getUserInfo</p>
+    <p>methods方法命名</p>
+    <p>系统中所有用到的方法统一已_ 开头（例:_queryAccount），并采用驼峰格式命名</p>
+    <p>正：_getUserInfo({name, age}) 或 _getUserInfo(params)</p>
+    <p>反：_getUserInfo(name, age)注意： 尽量使用对象方式传入参数，可拓展性强</p>
+    <p><a name="_Toc524360648"></a>业务组件包含三个方法（建议）</p>
+    <p>&nbsp;_fetch(params) // 用户查询或提交的统一入口 _initData(), // 初始化数据入口 _clearData() // 清空数据入口</p>
+    <p>全局参数命名已global开头</p>
+    <p>正： globalParams</p><p>反： params</p>
+    <p>Session中key定义session开头</p>
+    <p>正： sessionUserInfo</p><p>反： userInfo</p>
+    <p>定义枚举</p>
+    <p>const, 使用大写进行命名,对象属性使用大写例：QUERY_TYPE = { STAFF_TYPE: 1,STAFFCODE_TYPE:2,CODE: 3}</p>
+    <p>组件名称定义</p>
+    <p>已大写开头,或字母使用驼峰</p>
+    <p>正： ComprehensiveQuery</p><p>反： comprehensivequery注意：组件中data，必须有name属性，且值同组件名称相同 （例：组件名称为ComprehensiveQuery，那么 data { return {name:&rsquo;ComprehensiveQuery&rsquo;}}</p>
+    <p>vuex中state文件属命名</p>
+    <p>已小写字母开头（例：tagsList）,如果使用get方式 则已大写子=字母开头</p>
+    <p>正： get UserToken()</p><p>反： get usertoken()</p>
+    <p>vuex中mutations文件属性命名</p>
+    <p>使用大写进行命名，多单词使用_ (例: LOGIN_IN, LOGIN_OUT),变量的命名, 不得使用 js 保留字</p>
+    <p>js 保留字列表：</p>
+    <p>abstract boolean break byte case catch char class const continue default dodouble else extends false final finally float for function goto if implementsimport in instanceof int interface long native new null package privateprotected public return short static super switch synchronized this throw throwstransient true try var void while with</p>
+    <h2><a name="_Toc15548257"></a><a name="_Toc524360649"></a>2.3 HTML</h2>
+    <h3><a name="_Toc15548258"></a><a name="_Toc524360650"></a>2.3.1 命名规范</h3>
+    <p>id: 必须使用英文命名，首字母小写、驼峰式命名方式，使用惯例名称，除非常用简写，否则不可使用简写, 每个页面只能只用一次ID，确保网页中唯一有效的时候才可使用</p>
+    <p>class: 禁止出现大写字母，请使用&rdquo;-&ldquo;对字母分隔</p>
+    <h3><a name="_Toc15548259"></a><a name="_Toc524360651"></a>2.3.2 字符编码</h3>
+    <p>&lt;meta charset="utf-8"&gt;</p>
+    <h3><a name="_Toc15548260"></a><a name="_Toc524360652"></a>2.3.3 注释格式</h3>
+    <p>&lt;!-- 注释 --&gt;</p>
+    <h3><a name="_Toc15548261"></a><a name="_Toc524360653"></a>2.3.4 引入css、JavaScript</h3>
+    <p>不需要指定type类型</p>
+    <h3><a name="_Toc15548262"></a><a name="_Toc524360654"></a>2.3.5 Html属性顺序</h3>
+    <p>classid,namedata-*src,for,type,hreftitle,altaria-*,role</p>
+    <h3><a name="_Toc15548263"></a><a name="_Toc524360655"></a>2.3.6 语义化标签</h3>
+    <p>根据元素的意义来使用，&lt;header&gt;&lt;/header&gt;、&lt;aside&gt;&lt;/aside&gt;、&lt;footer&gt;&lt;/footer&gt;等</p>
+    <h3><a name="_Toc15548264"></a><a name="_Toc524360656"></a>2.3.7 缩进规则</h3>
+    <p>每个元素另起一行，每行缩进四个空格，不同的编辑器请确保tab是四个空格缩进时使用</p>
+    <h3><a name="_Toc15548265"></a><a name="_Toc524360657"></a>2.3.8 文档类型</h3>
+    <p>使用html5文档类型申明：&lt;!DOCTYPE html&gt;</p>
+    <h2><a name="_Toc15548266"></a><a name="_Toc524360658"></a>2.4 CSS</h2>
+    <h3><a name="_Toc15548267"></a><a name="_Toc524360659"></a>2.4.1 基本规则</h3>
+    <p>禁止使用行内样式，例：&lt;div style=&rdquo;width:100px;&rdquo;&gt;&lt;/div&gt;</p>
+    <p>样式属性后面必须加&ldquo;;&rdquo;</p>
+    <p>多选择器之间必须换行</p>
+    <p>针对特定dom样式，使用元素名+类名的方式</p>
+    <p>一个样式规则包含多个selector时，每个选择器必须独占一行</p>
+    <p>例：.post,.page{}</p>
+    <h3><a name="_Toc15548268"></a><a name="_Toc524360660"></a>2.4.2 空格使用</h3>
+    <p>选择器与 { 之前必须有空格，</p>
+    <p>属性名的 ：后必须有空格，</p>
+    <p>属性名的 ：前面禁止加空格，</p>
+    <p>属性名前一次缩进四个空格，不同的编辑器请确保tab是四个空格缩进时使用，</p>
+    <p>禁止一行样式 例：.c {width:100px;}</p>
+    <h3><a name="_Toc15548269"></a><a name="_Toc524360661"></a>2.4.3 单位使用</h3>
+    <p>省略0后面的单位。</p>
+    <p>颜色优先使用颜色英文、十六进制、透明时使用RGBA，</p>
+    <h3><a name="_Toc15548270"></a><a name="_Toc524360662"></a>2.4.4 属性顺序</h3>
+    <p>定位（常见：display、position、left、top、float等）</p>
+    <p>盒模型（常见：width、height、margin、padding、border等）</p>
+    <p>其他（color等）</p>
+    <h2><a name="_Toc15548271"></a>2.5 ant-design-vue的使用</h2>
+    <h3><a name="_Toc15548272"></a>2.5.1 插件以ant-design-vue为主</h3>
+    <p>不能满足再自己拓展</p>
+    <h3><a name="_Toc15548273"></a>2.5.2 提示语、弹窗等公用的插件</h3>
+    <p>使用ant-design-vue原生插件</p>
+    <h3><a name="_Toc15548274"></a>2.5.3 浏览器支持依赖说明</h3>
+    <p>引入ant-design-vue推荐使用的 babel-polyfill 和 babel-plugin-transform-runtime来支持所有的现代浏览器和 IE9+</p>
+    <h3>2.5.4 版本升级说明</h3>
+    <p>如第三方组件有小版本更新应及时更新，当出现大版本更新时，需结合项目实际情况进行更新</p>
+    <p><strong><br /> </strong></p>
+    <h1><a name="_Toc15548275"></a>3.基础技术点</h1>
+    <ul>
+        <li><a name="_Toc12032440"></a><a name="_Toc12032803"></a><a name="_Toc12354744"></a><a name="_Toc15548276"></a></li>
+    </ul>
+    <h2><a name="_Toc15548277"></a>3.1 组件全局注册</h2>
+    <p>例：import Condition from './ConditionFrom/condition'<br /> import ConditionThe from './ConditionFrom/conditionThe'<br /> export default {<br /> &nbsp;&nbsp; install (Vue) {<br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Vue.component(Condition.name, Condition)<br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Vue.component(ConditionThe.name, ConditionThe)<br /> &nbsp;&nbsp;&nbsp; }<br /> }全局注册后在main.js使用 Vue.use(myPlugins)</p>
+    <h2><a name="_Toc15548278"></a>3.2 组件间的通信</h2>
+    <h3><a name="_Toc15548279"></a>3.2.1 Vuex（非父子组件通信）</h3>
+    <p>获取state中的数据： this.$store.state.params (params为 state中定义的数据)</p>
+    <p>改变state中的数据： this.$store.commit(&lsquo;SET_PARAMS&rsquo;, 1) （SET_PARAMS 为mutations中定义的方法）</p>
+    <h3><a name="_Toc15548280"></a>3.2.2 Bus（非父子组件通信）</h3>
+    <p>用于非父子组件间通信，通过$bus.$emit 访问事件名称， 并带入参数（例：this.$bus.$emit(&lsquo;Condition&rsquo;,_$params)）</p>
+    <h3><a name="_Toc15548281"></a>3.2.3 父子组件通讯</h3>
+    <p>子组件在声明时添加props属性， 并设置对应参数名称。</p>
+    <p>父组件在使用时，带入props 中对应的属性 并可以把数据传入给子组件</p>
+    <p>父组件定义方法并声明事件，子组件中使用this.$emit 调用事件并带入参数</p>
+    <h2><a name="_Toc15548282"></a>3.3 混入mixins</h2>
+    <p>使用mixins为组件注入共有属性、方法、事件</p>
+    <p>注意：使用全局混入要注意判断，应为全局混入会影响到工程中所有的vue组价，包括引用的第三方组件</p>
+    <h2><a name="_Toc15548283"></a>3.4 状态管理Vuex</h2>
+    <p>用于全局数据的状态管理，保存数据</p>
+    <p>state定义状态属性</p>
+    <p>mutations 定义变化事件， 用于改变state中属性的状态</p>
+    <p><strong><br /> </strong></p>
+    <h1><a name="_Toc15548284"></a>4.通用配置</h1>
+    <ul>
+        <li><a name="_Toc12032449"></a><a name="_Toc12032812"></a><a name="_Toc12354753"></a><a name="_Toc15548285"></a></li>
+    </ul>
+    <h2><a name="_Toc15548286"></a>4.1 权限路由限制</h2>
+    <p>Main.js文件下，配置了根据用户权限限制路由的方法：</p>
+    <p>router.beforeEach((to, from, next) =&gt; {&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &hellip;&hellip;}</p>
+    <p>该方法通过判断vuex中通过从后端请求的用户的信息以及token进行路由限制</p>
+    <h2><a name="_Toc15548287"></a>4.2 API统一管理文件</h2>
+    <p>Config文件夹下，apiAddress.js整合了所有项目用到的接口，</p>
+    <p>通过接口转发的方式可实现服务联调</p>
+    <h2><a name="_Toc15548288"></a>4.3 Axios请求拦截配置</h2>
+    <p>Config文件夹下，axiosConfig.js配置了axios请求事件的方法，</p>
+    <p>通过对请求事件的拦截和配置，可以实现每次请求的权限判断、超时请求时间设置、修改请求头以及封装请求方式</p>
+    <h2><a name="_Toc15548289"></a>4.4 请求地址代理配置（接口联调）</h2>
+    <p>Vue.config.js文件下，配置了Vue Cli的多种方法，其中就包括端口的代理配置：</p>
+    <p>例：proxy: {&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; '/api': {&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // 开发接口联调请求服务器地址，每次修改地址需要重新编译项目&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; target: 'http://192.168.XXX.XXX',&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; changOrigin: true, // 跨域&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ws: true,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; pathRewrite: {&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;'^/api' : '/api'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }&nbsp;&nbsp;&nbsp; },'/api'：需要做接口代理的标识，'/api'开头的地址才做代理target：接口联调请求服务器地址，每次修改地址需要重新编译项目changOrigin：跨域pathRewrite：替代规则</p>
+    <p>&nbsp;</p>
+    <h2><a name="_Toc15548290"></a>4.5 ESLint配置</h2>
+    <p>Vue.config.js文件下，配置了Vue Cli的多种方法，其中就包括端口的代理配置：</p>
+    <p>例：overlay: {&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; warnings: true,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; errors: true}</p>
+    <p>warnings：开启后若代码有不符合规范的地方会在控制台上报错</p>
+    <p>errors：开启后若代码有不符合规范的地方会在编译时不允许通过</p>
+    <p>ESLint规则部分 可以在.eslintrc.js 文件中配置</p>
+    <p>&nbsp;</p>
+    <h2><a name="_Toc15548291"></a>4.6 px2rem配置说明</h2>
+    <p>通过config文件夹下的remConfig.js与vue.config.js共同配置</p>
+    <p>只需要设定要vue.config.js中的remUnit以及remConfig.js下的baseSize基本大小。另外，设定remConfig.js下的scale宽度部分调整和UI匹配的宽度标准之后，再通过main.js引用即可。</p>
+    <p>&nbsp;</p>
+    <h2><a name="_Toc15548292"></a>4.7 安全性配置</h2>
+    <p>axiosConfig.js文件下，通过拦截器拦截请求，调用assets/tools/cros.js文件中的方法，对请求的url做了处理，得到的signin和key分别放入请求的相应位置中，再发送请求。</p>
+    <p>该配置用于防止CROS攻击，需要和后端确定后再使用。</p>
+    <p>&nbsp;</p>
+    <h2><a name="_Toc15548293"></a>4.8 兼容性配置</h2>
+    <p>例：在babel.config.js中配置module.exports = {&nbsp; presets: [&nbsp;&nbsp;&nbsp; [&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; '@vue/app',&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; useBuiltIns: 'entry'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }&nbsp;&nbsp;&nbsp; ]&nbsp; ]}</p>
+    <p>并在主入口文件main.js中引入import '@babel/polyfill'</p>
+    <p><strong><br /> </strong></p>
+    <h1><a name="_Toc15548294"></a>5.项目运行</h1>
+    <h2><a name="_Toc15548296"></a>5.1 命令方式</h2>
+    <p>项目根目录内执行：npm run serve</p>
+    <h2><a name="_Toc15548297"></a>5.2 图形界面方式</h2>
+    <p>在serve下，点击&ldquo;运行&rdquo;，等待编译完成之后，即可启动app</p>
+    <img src="docImg2.png" style="width: 100%">
+    <h1><a name="_Toc15548298"></a>6.打包发布</h1>
+    <h2><a name="_Toc15548300"></a>6.1 命令方式</h2>
+    <p>项目根目录内执行：npm run build</p>
+    <p>&nbsp;</p>
+    <h2><a name="_Toc15548301"></a>6.2 图形界面方式</h2>
+    <p>或者使用图形界面进行打包：</p>
+    <p>在build下，点击&ldquo;运行&rdquo;，即可打包好项目，项目默认存于dist文件夹内，用于生产环境的发布</p>
+    <img src="docImg3.png" style="width: 100%">
+    <p>&nbsp;</p>
+    <p>可以按部署需要修改公共路径和输出目录等配置</p>
+    <p>&nbsp;</p>
+    <h2><a name="_Toc15548302"></a>6.3 现代模式</h2>
+    <p>Vue CLI 提供了一个&ldquo;现代模式&rdquo;帮你解决这个问题。以如下命令为生产环境构建：</p>
+    <p>vue-cli-service build --modern</p>
+    <p>Vue CLI 会产生两个应用的版本：一个现代版的包，面向支持 ES modules 的现代浏览器，另一个旧版的包，面向不支持的旧浏览器。</p>
+    <p>&nbsp;</p>
+    <p>这里没有特殊的部署要求。其生成的 HTML 文件会自动使用以下技术：</p>
+    <p>现代版的包会通过 &lt;script type="module"&gt; 在被支持的浏览器中加载；它们还会使用 &lt;link rel="modulepreload"&gt; 进行预加载。</p>
+    <p>旧版的包会通过 &lt;script nomodule&gt; 加载，并会被支持 ES modules 的浏览器忽略。</p>
+    <p>一个针对 Safari 10 中 &lt;script nomodule&gt; 的修复会被自动注入。</p>
+    <p>&nbsp;</p>
+    <p>对于一个 Hello World 应用来说，现代版的包已经小了 16%。在生产环境下，现代版的包通常都会表现出显著的解析速度和运算速度，从而改善应用的加载性能。</p>
+    <p>&nbsp;</p>
+</body>
+</html>
