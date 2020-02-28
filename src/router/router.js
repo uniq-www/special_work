@@ -43,6 +43,16 @@ export default new Router({
           name: 'tableCode',
           component: resolve => require(['@/views/table/tableCode.vue'], resolve)
         },
+        // {
+        //   path: 'menuComponents',
+        //   name: 'menuComponents',
+        //   component: resolve => require(['@/views/menu/menuComponents.vue'], resolve)
+        // },
+        {
+          path: 'menuCode',
+          name: 'menuCode',
+          component: resolve => require(['@/views/menu/menuCode.vue'], resolve)
+        },
         {
           path: 'btnComponents',
           name: 'btnComponents',

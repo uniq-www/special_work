@@ -8,41 +8,15 @@
     >
         <template v-for="item in menuList">
             <a-menu-item :key="item.key" v-if="!item.children">
-                <router-link v-if="!item.out" :to="item.path"> <a-icon type="bars" /><span>{{item.title}}</span></router-link>
-                <a v-else href="http://192.168.254.36/tccfront/" target="_blank">{{item.title}}</a>
+                <router-link :to="item.path"> <a-icon type="bars" /><span>{{item.title}}</span></router-link>
             </a-menu-item>
-<!--            <tcc-sub-menu v-else :menu-info="item" :key="item.key"></tcc-sub-menu>-->
-            <a-sub-menu v-else :key="item.key" class="sub-menu-cont">
-                <span slot="title">
-                  <a-icon type="bars" />
-                  <span>{{ item.title }}</span>
-                </span>
-                <template v-for="item1 in item.children">
-                    <a-menu-item v-if="!item1.children" :key="item1.key">
-                        <router-link :to="item1.path">
-                            {{ item1.title }}
-                        </router-link>
-                    </a-menu-item>
-                    <a-sub-menu v-else :key="item1.key">
-                        <span slot="title">
-                          <a-icon type="profile" />
-                          <span>{{ item1.title }}</span>
-                        </span>
-                        <template v-for="item2 in item1.children">
-                            <a-menu-item v-if="!item2.children" :key="item2.key">
-                                <router-link :to="item2.path">
-                                    {{ item2.title }}
-                                </router-link>
-                            </a-menu-item>
-                        </template>
-                    </a-sub-menu>
-                </template>
-            </a-sub-menu>
+            <tcc-sub-menu v-else :menuInfo="item" :key="item.key"></tcc-sub-menu>
         </template>
     </a-menu>
 </template>
 
 <script>
+import subMenu from './tcc-subMenu'
 export default {
   name: 'tcc-menu',
   props: {
@@ -64,6 +38,9 @@ export default {
         return 'dark'
       }
     }
+  },
+  components:{
+    'tcc-sub-menu': subMenu
   }
 }
 </script>
