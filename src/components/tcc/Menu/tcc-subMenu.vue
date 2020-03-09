@@ -1,18 +1,18 @@
 <template functional>
-    <a-sub-menu :key="props.menuInfo.key">
-    <span slot="title">
-      <a-icon type="bars" />
-      <span>{{ props.menuInfo.title }}</span>
-    </span>
-        <template v-for="item in props.menuInfo.children">
-            <a-menu-item v-if="!item.children" :key="item.key">
-                <router-link :to="item.path">
-                    <a-icon type="tag" />{{ item.title }}
-                </router-link>
-            </a-menu-item>
-            <sub-menu v-else :menuInfo="item" :key="item.key"/>
-        </template>
-    </a-sub-menu>
+  <a-sub-menu :key="props.menuInfo.key">
+  <span slot="title">
+    <a-icon type="bars" />
+    <span>{{ props.menuInfo.title }}</span>
+  </span>
+    <template v-for="item in props.menuInfo.children">
+      <a-menu-item v-if="!item.children" :key="item.key">
+        <router-link :to="item.path">
+          <a-icon type="tag" />{{ item.title }}
+        </router-link>
+      </a-menu-item>
+      <sub-menu v-else :menuInfo="item" :key="item.key"/>
+    </template>
+  </a-sub-menu>
 </template>
 <script>
 export default {

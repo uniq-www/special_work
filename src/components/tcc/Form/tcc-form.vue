@@ -1,77 +1,61 @@
 <template>
-    <a-spin :spinning="loading">
-        <a-form :layout="layout" :form="form" @submit="handleSubmit">
-            <a-form-item v-for="(item, index) in items" :key="index" :label="item.label" :colon="false" :extra="item.extra || null" :hasFeedback="hasFeedback(item)" :label-col="item.labelCol || labelCol" :wrapper-col="item.wrapperCol || wrapperCol" class="formItem">
-                <!-- 文本输入框 -->
-                <a-input v-if="item.type === 'text'" type="text" :placeholder="item.placeholder" :disabled="item.disabled || false" v-decorator="[item.key, {initialValue: item.initialValue || undefined, rules: item.rules || null}]" />
+  <a-spin :spinning="loading">
+    <a-form :layout="layout" :form="form" @submit="handleSubmit">
+      <a-form-item v-for="(item, index) in items" :key="index" :label="item.label" :colon="false" :extra="item.extra || null" :hasFeedback="hasFeedback(item)" :label-col="item.labelCol || labelCol" :wrapper-col="item.wrapperCol || wrapperCol" class="formItem">
+        <!-- 文本输入框 -->
+        <a-input v-if="item.type === 'text'" type="text" :placeholder="item.placeholder" :disabled="item.disabled || false" v-decorator="[item.key, {initialValue: item.initialValue || undefined, rules: item.rules || null}]" />
 
-                <!-- 数字输入框 -->
-                <a-input-number v-else-if="item.type === 'number'" :placeholder="item.placeholder" :disabled="item.disabled || false" :step='item.step || 1' v-decorator="[item.key, {initialValue: item.initialValue || undefined, rules: item.rules || null}]" style="width: 100%;" />
+        <!-- 数字输入框 -->
+        <a-input-number v-else-if="item.type === 'number'" :placeholder="item.placeholder" :disabled="item.disabled || false" :step='item.step || 1' v-decorator="[item.key, {initialValue: item.initialValue || undefined, rules: item.rules || null}]" style="width: 100%;" />
 
-                <!-- 长文本框 -->
-                <a-input v-else-if="item.type === 'textarea'" type="textarea" :autosize="{ minRows: 3, maxRows: 10 }" :placeholder="item.placeholder" :disabled="item.disabled || false" v-decorator="[item.key, {initialValue: item.initialValue || undefined, rules: item.rules || null}]" />
+        <!-- 长文本框 -->
+        <a-input v-else-if="item.type === 'textarea'" type="textarea" :autosize="{ minRows: 3, maxRows: 10 }" :placeholder="item.placeholder" :disabled="item.disabled || false" v-decorator="[item.key, {initialValue: item.initialValue || undefined, rules: item.rules || null}]" />
 
-                <!-- 开关 -->
-                <a-switch v-else-if="item.type === 'switch'" :disabled="item.disabled || false" :defaultChecked="strToBoo(item.initialValue)" v-decorator="[item.key, {initialValue: strToBoo(item.initialValue), rules: item.rules || null}]" />
+        <!-- 开关 -->
+        <a-switch v-else-if="item.type === 'switch'" :disabled="item.disabled || false" :defaultChecked="strToBoo(item.initialValue)" v-decorator="[item.key, {initialValue: strToBoo(item.initialValue), rules: item.rules || null}]" />
 
-                <!-- 下拉框选项 -->
-                <a-select v-else-if="item.type === 'select'" :placeholder="item.placeholder" :disabled="item.disabled || false" v-decorator="[item.key, {initialValue: item.initialValue || undefined, rules: item.rules || null}]">
-                    <a-select-option v-for="(option, index) in item.options" :key="index" :value="option.value">
-                        {{ option.label }}
-                    </a-select-option>
-                </a-select>
+        <!-- 下拉框选项 -->
+        <a-select v-else-if="item.type === 'select'" :placeholder="item.placeholder" :disabled="item.disabled || false" v-decorator="[item.key, {initialValue: item.initialValue || undefined, rules: item.rules || null}]">
+          <a-select-option v-for="(option, index) in item.options" :key="index" :value="option.value">{{ option.label }}</a-select-option>
+        </a-select>
 
-                <!-- 下拉树选项 -->
-                <a-tree-select v-else-if="item.type === 'tree'" :placeholder="item.placeholder" v-decorator="[item.key, {initialValue: item.initialValue || undefined, rules: item.rules || null}]" :dropdownStyle="{ maxHeight: '350px', overflow: 'auto' }" :treeData="item.options" :disabled="item.disabled || false" :treeCheckable="item.check || false">
-                </a-tree-select>
+        <!-- 下拉树选项 -->
+        <a-tree-select v-else-if="item.type === 'tree'" :placeholder="item.placeholder" v-decorator="[item.key, {initialValue: item.initialValue || undefined, rules: item.rules || null}]" :dropdownStyle="{ maxHeight: '350px', overflow: 'auto' }" :treeData="item.options" :disabled="item.disabled || false" :treeCheckable="item.check || false">
+        </a-tree-select>
 
-                <!-- 上传文件 -->
-                <a-upload
-                        v-else-if="item.type === 'file'" v-decorator="[item.key]" :fileList="fileList[item.key] || initFileList(item)" :accept="item.accept" :beforeUpload="(file, fileList) => beforeUpload(file, fileList, item)" :remove="(file) => handleRemove(file, item)">
-                    <a-button>
-                        <a-icon type="upload" /> 附件上传
-                    </a-button>
-                </a-upload>
+        <!-- 上传文件 -->
+        <a-upload
+          v-else-if="item.type === 'file'" v-decorator="[item.key]" :fileList="fileList[item.key] || initFileList(item)" :accept="item.accept" :beforeUpload="(file, fileList) => beforeUpload(file, fileList, item)" :remove="(file) => handleRemove(file, item)">
+          <a-button><a-icon type="upload" /> 附件上传</a-button>
+        </a-upload>
 
-                <!-- 上传图片 -->
-                <a-upload
-                        v-else-if="item.type === 'img'" v-decorator="[item.key]" :fileList="fileList[item.key] || initFileList(item)" :accept="item.accept" :beforeUpload="(file, fileList) => beforeUpload(file, fileList, item)" :remove="(file) => handleRemove(file, item)">
-                    <a-button>
-                        <a-icon type="upload" /> 附件上传
-                    </a-button>
-                </a-upload>
+        <!-- 上传图片 -->
+        <a-upload
+          v-else-if="item.type === 'img'" v-decorator="[item.key]" :fileList="fileList[item.key] || initFileList(item)" :accept="item.accept" :beforeUpload="(file, fileList) => beforeUpload(file, fileList, item)" :remove="(file) => handleRemove(file, item)">
+          <a-button><a-icon type="upload" /> 附件上传</a-button>
+        </a-upload>
 
-                <!-- 日期选择器 -->
-                <a-date-picker v-else-if="item.type === 'day'" v-decorator="[item.key, {initialValue: item.initialValue || undefined, rules: item.rules || null}]" :placeholder="item.placeholder" style="width: 100%;" />
+        <!-- 日期选择器 -->
+        <a-date-picker v-else-if="item.type === 'day'" v-decorator="[item.key, {initialValue: item.initialValue || undefined, rules: item.rules || null}]" :placeholder="item.placeholder" style="width: 100%;" />
 
-                <!-- 月份选择器 -->
-                <a-month-picker v-else-if="item.type === 'month'" v-decorator="[item.key, {initialValue: item.initialValue || undefined, rules: item.rules || null}]" :placeholder="item.placeholder" style="width: 100%;" />
+        <!-- 月份选择器 -->
+        <a-month-picker v-else-if="item.type === 'month'" v-decorator="[item.key, {initialValue: item.initialValue || undefined, rules: item.rules || null}]" :placeholder="item.placeholder" style="width: 100%;" />
 
-                <!-- 时间区间选择器 -->
-                <a-range-picker v-else-if="item.type === 'range'" v-decorator="[item.key, {initialValue: item.initialValue || undefined, rules: item.rules || null}]" style="width: 100%;" />
+        <!-- 时间区间选择器 -->
+        <a-range-picker v-else-if="item.type === 'range'" v-decorator="[item.key, {initialValue: item.initialValue || undefined, rules: item.rules || null}]" style="width: 100%;" />
 
-            </a-form-item>
+      </a-form-item>
 
-            <div v-if="layout === 'horizontal'">
-                <a-button class="formBtn" v-if="btns.submit" type="primary" html-type="submit">
-                    提交
-                </a-button>
-                <a-button class="formBtn" v-if="btns.reset" type="danger" @click="handleReset">
-                    重置
-                </a-button>
-                <a-button class="formBtn" v-if="btns.back" @click="handleBack">
-                    返回
-                </a-button>
-            </div>
-        </a-form>
-        <div v-if="layout === 'inline'">
-            <a-button class="formBtn" type="primary" html-type="submit">
-                查询
-            </a-button>
-            <a-button class="formBtn" type="danger" @click="handleReset">
-                重置
-            </a-button>
-        </div>
+      <div v-if="layout === 'horizontal'">
+        <a-button class="formBtn" v-if="btns.submit" type="primary" html-type="submit">提交</a-button>
+        <a-button class="formBtn" v-if="btns.reset" type="danger" @click="handleReset">重置</a-button>
+        <a-button class="formBtn" v-if="btns.back" @click="handleBack">返回</a-button>
+      </div>
+    </a-form>
+    <div v-if="layout === 'inline'">
+      <a-button class="formBtn" type="primary" html-type="submit">查询</a-button>
+      <a-button class="formBtn" type="danger" @click="handleReset">重置</a-button>
+    </div>
     </a-spin>
 </template>
 

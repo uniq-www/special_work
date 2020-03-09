@@ -1,68 +1,65 @@
 <template>
-    <div class="table-page">
-        <div class="t_searchbox" style="margin-top: -10px" v-if="defaultInit.showHead">
-            <a-form  layout="inline">
-                <slot name="searchItem"></slot>
-                <a-form-item>
-                    <a-button class="f_aBut" @click="queryData(true)">查询</a-button>
-                    <a-button class="f_aBut" style="margin-left: 10px" @click="addTable(1)">新增</a-button>
-                    <a-button class="f_aBut" v-if="defaultInit.addType==='row'" type="primary" style="margin-left: 10px" @click="saveTable">保存</a-button>
-                    <slot name="operateBtn"></slot>
-                </a-form-item>
-            </a-form>
-        </div>
-        <div class="table-cont">
-            <a-table
-                    class="f_tableList f_mr_b"
-                    style="margin-top: 10px; padding: 0 10px"
-                    :columns="defaultInit.columns"
-                    :dataSource="dataArr"
-                    :pagination="myPagination"
-                    :rowSelection="defaultInit.rowSelection?{selectedRowKeys: selectedRowKeys, onChange: onSelectChange}:null"
-                    :scroll="{x:defaultInit.x}"
-            >
-                <template
-                        v-for="col in defaultInit.editArr"
-                        :slot="col"
-                        slot-scope="text, record"
-                >
-                    <div :key="col">
-                        <a-input
-                                v-if="record.editable"
-                                style="margin: -5px 0; width: 80px"
-                                :value="text"
-                                @change="e => handleChange(e.target.value, record.key, col)"
-                        />
-                        <template v-else>{{text}}</template>
-                    </div>
-                </template>
-                <template slot="operation" slot-scope="text, record">
-                    <a v-if="!record.editable" @click="addTable(2, record)" style="margin-right: 10px">修改</a>
-                    <a v-else @click="saveTable(record)" style="margin-right: 10px">保存</a>
-                    <a @click="deleteRow(1, record)">删除</a>
-                </template>
-            </a-table>
-        </div>
-        <a-modal :title="defaultInit.modalTitle"
-                 v-model="addShow"
-                 :width="defaultInit.addItem.length>4?'750px':'400px'"
-                 :maskClosable="false"
-                 @ok="addToTable"
-                 @cancel="clearForm"
-                 okText="确认"
-                 cancelText="取消"
-                 :rowKey="(record, index) => index"
-        >
-            <div :style="'height:'+defaultInit.height">
-                <slot name="modalCont"></slot>
+  <div class="table-page">
+    <div class="t_searchbox" style="margin-top: -10px" v-if="defaultInit.showHead">
+      <a-form  layout="inline">
+        <slot name="searchItem"></slot>
+        <a-form-item>
+          <a-button class="f_aBut" @click="queryData(true)">查询</a-button>
+          <a-button class="f_aBut" style="margin-left: 10px" @click="addTable(1)">新增</a-button>
+          <a-button class="f_aBut" v-if="defaultInit.addType==='row'" type="primary" style="margin-left: 10px" @click="saveTable">保存</a-button>
+          <slot name="operateBtn"></slot>
+        </a-form-item>
+      </a-form>
+    </div>
+    <div class="table-cont">
+      <a-table
+        class="f_tableList f_mr_b"
+        style="margin-top: 10px; padding: 0 10px"
+        :columns="defaultInit.columns"
+        :dataSource="dataArr"
+        :pagination="myPagination"
+        :rowSelection="defaultInit.rowSelection?{selectedRowKeys: selectedRowKeys, onChange: onSelectChange}:null"
+        :scroll="{x:defaultInit.x}">
+        <template
+          v-for="col in defaultInit.editArr"
+          :slot="col"
+          slot-scope="text, record">
+          <div :key="col">
+            <a-input
+              v-if="record.editable"
+              style="margin: -5px 0; width: 80px"
+              :value="text"
+              @change="e => handleChange(e.target.value, record.key, col)"/>
+            <template v-else>{{text}}</template>
             </div>
-        </a-modal>
-        <a-layout-footer class="footer" v-if="defaultInit.rowSelection">
-            <div class="ul_state" style="text-align: right">
-                <!--        <a-checkbox style="width: 60%; text-align: left" @change="_checkAll" :indeterminate="indeterminate" :checked="checkAll">全选</a-checkbox>-->
-                <a-button @click="deleteRow(2)">删除</a-button>
-            </div>
-        </a-layout-footer>
+        </template>
+        <template slot="operation" slot-scope="text, record">
+          <a v-if="!record.editable" @click="addTable(2, record)" style="margin-right: 10px">修改</a>
+          <a v-else @click="saveTable(record)" style="margin-right: 10px">保存</a>
+          <a @click="deleteRow(1, record)">删除</a>
+        </template>
+      </a-table>
+    </div>
+    <a-modal
+      :title="defaultInit.modalTitle"
+      v-model="addShow"
+      :width="defaultInit.addItem.length>4?'750px':'400px'"
+      :maskClosable="false"
+      @ok="addToTable"
+      @cancel="clearForm"
+      okText="确认"
+      cancelText="取消"
+      :rowKey="(record, index) => index">
+      <div :style="'height:'+defaultInit.height">
+        <slot name="modalCont"></slot>
+      </div>
+    </a-modal>
+    <a-layout-footer class="footer" v-if="defaultInit.rowSelection">
+      <div class="ul_state" style="text-align: right">
+        <!--        <a-checkbox style="width: 60%; text-align: left" @change="_checkAll" :indeterminate="indeterminate" :checked="checkAll">全选</a-checkbox>-->
+        <a-button @click="deleteRow(2)">删除</a-button>
+      </div>
+    </a-layout-footer>
     </div>
 </template>
 

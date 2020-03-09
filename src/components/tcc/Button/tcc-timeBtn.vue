@@ -1,11 +1,11 @@
 <template>
-    <a-button @click="setOperate" :disabled="disabled">
-        {{title}} <span v-show="disabled">({{setTime}} s)</span>
-    </a-button>
+  <a-button @click="setOperate" :disabled="disabled">
+    {{title}} <span v-show="disabled">({{setTime}} s)</span>
+  </a-button>
 </template>
 
 <script>
-  export default {
+export default {
     name: "tcc-timeBtn",
     props: {
       title: {

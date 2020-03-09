@@ -1,48 +1,48 @@
 <template>
-    <div style="text-align: left">
-        <code-layout title="表格配置" :data="data">
-            <template slot="code-cont">
-                <pre v-highlight-a>
-                    <code>
+  <div style="text-align: left">
+    <code-layout title="表格配置" :data="data">
+      <template slot="code-cont">
+        <pre v-highlight-a>
+          <code>
 defaultInit: {
-        showHead: true,
-        columns: [
-          {title: '序列号', dataIndex: 'key', align: 'left'},
-          {title: '姓名', dataIndex: 'name', align: 'left', scopedSlots: { customRender: 'name' }, necessary: true},
-          {title: '年龄', dataIndex: 'age', align: 'left', scopedSlots: { customRender: 'age' }, necessary: true},
-          {title: '性别', dataIndex: 'sex', align: 'left'},
-          {title: '操作', dataIndex: 'operation', align: 'center', scopedSlots: { customRender: 'operation' }},
-        ],
-        data: [
-          {name: '小红', age: 16, sex: '女', key: 1},
-          {name: '小黄', age: 17, sex: '男', key: 2},
-          {name: '小蓝', age: 20, sex: '女', key: 3},
-        ],
-        addItem: [
-          {title: '姓名', dataIndex: 'name'},
-          {title: '年龄', dataIndex: 'age'},
-          {title: '性别', dataIndex: 'sex'}
-        ],
-        add_form: {},
-        t_form: {
-          searchVal: ''
-        },
-        modalTitle: '新增/修改',
-        height: '200px',
-        rowSelection: true,
-        addType: 'modal',
-        addRow: {key: 1, name: 'AA', age: 10, sex: '女' },
-        editArr: ['name', 'age'],
-      }
-                    </code>
-                </pre>
-            </template>
-        </code-layout>
-        <code-layout title="事件" :data="methodData" :showCode="false" style="margin-top: 10px"/>
-        <div class="download" style="margin-top: 20px">
-            <a-button><a href="../../../static/tcc-table.zip" download="表格组件代码">代码下载</a></a-button>
-        </div>
+    showHead: true,
+    columns: [
+      {title: '序列号', dataIndex: 'key', align: 'left'},
+      {title: '姓名', dataIndex: 'name', align: 'left', scopedSlots: { customRender: 'name' }, necessary: true},
+      {title: '年龄', dataIndex: 'age', align: 'left', scopedSlots: { customRender: 'age' }, necessary: true},
+      {title: '性别', dataIndex: 'sex', align: 'left'},
+      {title: '操作', dataIndex: 'operation', align: 'center', scopedSlots: { customRender: 'operation' }},
+    ],
+    data: [
+      {name: '小红', age: 16, sex: '女', key: 1},
+      {name: '小黄', age: 17, sex: '男', key: 2},
+      {name: '小蓝', age: 20, sex: '女', key: 3},
+    ],
+    addItem: [
+      {title: '姓名', dataIndex: 'name'},
+      {title: '年龄', dataIndex: 'age'},
+      {title: '性别', dataIndex: 'sex'}
+    ],
+    add_form: {},
+    t_form: {
+      searchVal: ''
+    },
+    modalTitle: '新增/修改',
+    height: '200px',
+    rowSelection: true,
+    addType: 'modal',
+    addRow: {key: 1, name: 'AA', age: 10, sex: '女' },
+    editArr: ['name', 'age'],
+  }
+                </code>
+        </pre>
+      </template>
+    </code-layout>
+    <code-layout title="事件" :data="methodData" :showCode="false" style="margin-top: 10px"/>
+    <div class="download" style="margin-top: 20px">
+      <a-button><a href="../../../static/tcc-table.zip" download="表格组件代码">代码下载</a></a-button>
     </div>
+  </div>
 </template>
 
 <script>

@@ -1,24 +1,23 @@
 <template>
-    <div style="text-align: left">
-        <h2>{{title}}</h2>
-        <div>
-            <slot name="describe"></slot>
-            <a-collapse defaultActiveKey="0" :bordered="false" v-if="showCode">
-                <a-collapse-panel header="详细代码" key="1">
-                    <slot name="code-cont"></slot>
-                </a-collapse-panel>
-            </a-collapse>
-            <div>
-                <h3 style="margin-top: 10px">{{extraTitle}}</h3>
-                <a-table :columns="columns" :dataSource="data" :pagination="false" :rowKey="record => record.params">
-                </a-table>
-            </div>
-        </div>
+  <div style="text-align: left">
+    <h2>{{title}}</h2>
+    <div>
+      <slot name="describe"></slot>
+      <a-collapse defaultActiveKey="0" :bordered="false" v-if="showCode">
+        <a-collapse-panel header="详细代码" key="1">
+          <slot name="code-cont"></slot>
+        </a-collapse-panel>
+      </a-collapse>
+      <div>
+        <h3 style="margin-top: 10px">{{extraTitle}}</h3>
+        <a-table :columns="columns" :dataSource="data" :pagination="false" :rowKey="record => record.params"/>
+      </div>
     </div>
+  </div>
 </template>
 
 <script>
-  export default {
+export default {
     name: "code-layout",
     props: {
       title: {

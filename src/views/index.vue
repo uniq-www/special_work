@@ -1,7 +1,7 @@
 <template>
-    <div style="height: 100%;width: 100%">
-      <tcc-layout></tcc-layout>
-    </div>
+  <div style="height: 100%;width: 100%">
+    <tcc-layout></tcc-layout>
+  </div>
 </template>
 
 <script>

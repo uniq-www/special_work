@@ -54,11 +54,7 @@ export default {
                 {title: '表格使用', path: '/home/tableCode', key: '2-2-2'}
               ]
             },
-            { title: '菜单', path: '/home/formComponents', key: '2-3',
-              children: [
-                // {title: '菜单demo', path: '/home/menuComponents', key: '2-3-1'},
-                {title: '菜单使用', path: '/home/menuCode', key: '2-3-2'}
-              ]},
+            { title: '内嵌菜单', path: '/home/menuComponents', key: '2-3'},
             { title: '延时按钮', path: '/home/btnComponents', key: '2-4'}
           ]
         },

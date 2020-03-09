@@ -1,7 +1,7 @@
 <template>
-    <div>
-       <tcc-form :items="formList" :btns="formBtn" :loading="loading" :setValue="setVal" @submit="handleSubmit"></tcc-form>
-    </div>
+  <div>
+    <tcc-form :items="formList" :btns="formBtn" :loading="loading" :setValue="setVal" @submit="handleSubmit"></tcc-form>
+  </div>
 </template>
 
 <script>

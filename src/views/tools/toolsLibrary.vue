@@ -1,15 +1,13 @@
 <template>
-    <div style="text-align: left">
-        <h2>封装工具类</h2>
-        <div style="width: 80%">
-            <h3>
-                本界面提供了常用的前端工具类封装函数：其中包括了判空工具，时间封装工具，
-            </h3>
-            <div id="components-null" style="padding-top: 10px">
-                <h3>判空工具</h3>
-                <p>1，判断是否为空值</p>
-                <pre v-highlightA>
-                    <code>
+  <div style="text-align: left">
+    <h2>封装工具类</h2>
+    <div style="width: 80%">
+      <h3>本界面提供了常用的前端工具类封装函数：其中包括了判空工具，时间封装工具，</h3>
+      <div id="components-null" style="padding-top: 10px">
+        <h3>判空工具</h3>
+        <p>1，判断是否为空值</p>
+        <pre v-highlightA>
+          <code>
 isNull (str) {
   if (str != null && typeof str !== 'undefined' && str !== '' && str !== 'null') {
     return false
@@ -17,11 +15,11 @@ isNull (str) {
     return true
   }
 },
-                    </code>
-                </pre>
-                <p>2，判断是否为空对象</p>
-                <pre v-highlightA>
-                    <code>
+          </code>
+        </pre>
+        <p>2，判断是否为空对象</p>
+        <pre v-highlightA>
+          <code>
 objectIsBlank (obj) {
 if(JSON.stringify(obj)=="{}"){
   return true
@@ -31,14 +29,14 @@ if(Object.keys(obj).length==0){
 }
 return false
 }
-                    </code>
-                </pre>
-            </div>
-            <div id="components-time" style="padding-top: 10px">
-                <h3>时间类工具</h3>
-                <p>1，将传入时间转换为所需时间格式，可控制年份</p>
-                <pre v-highlightA>
-                <code>
+          </code>
+        </pre>
+      </div>
+      <div id="components-time" style="padding-top: 10px">
+        <h3>时间类工具</h3>
+        <p>1，将传入时间转换为所需时间格式，可控制年份</p>
+        <pre v-highlightA>
+          <code>
 /**
  * @param date antd时间选择器日期
  * @param dateFormat 转换时间的格式
@@ -91,11 +89,11 @@ function formatterDate (date, dateFormat, yearStr) {
   }
   return dateFmt
 }
-                </code>
-            </pre>
-                <p>2，获取时间戳</p>
-                <pre v-highlightA>
-                <code>
+          </code>
+        </pre>
+        <p>2，获取时间戳</p>
+        <pre v-highlightA>
+          <code>
 /**
  * @param date 传入时间（YYYY/MM/DD格式）
  * @returns {number}
@@ -130,11 +128,11 @@ function stringToDateTime (date) {
   }
   return time
 }
-                </code>
-            </pre>
-                <p>3，获得两个日期之间相差的天数</p>
-                <pre v-highlightA>
-                <code>
+          </code>
+        </pre>
+        <p>3，获得两个日期之间相差的天数</p>
+        <pre v-highlightA>
+          <code>
 /**
  * @param date1 日期对象
  * @param date2 日期对象
@@ -145,11 +143,11 @@ function getDays(date1, date2) {
     const minusDays = Math.floor(((date2.getTime() - date1.getTime()) / dateTime));//计算出两个日期的天数差
     return Math.abs(minusDays);
 }
-                </code>
-            </pre>
-                <p>3，获取当月第一天或最后一天</p>
-                <pre v-highlightA>
-                <code>
+          </code>
+        </pre>
+        <p>3，获取当月第一天或最后一天</p>
+        <pre v-highlightA>
+          <code>
 /**
  * @param date 日期对象
  * @param last last为true表示获取最后一天
@@ -164,11 +162,11 @@ function getMonthSomeDay(date, last=false) {
     }
     return d;
 }
-                </code>
-            </pre>
-                <p>4，判断日期区间是否在限定范围内</p>
-                <pre v-highlightA>
-                <code>
+          </code>
+        </pre>
+        <p>4，判断日期区间是否在限定范围内</p>
+        <pre v-highlightA>
+          <code>
  /**
  * @param beginDate 起始日期: YYYYMMDD
  * @param endDate 结束日期: YYYYMMDD
@@ -207,14 +205,14 @@ function judgeDate (beginDate, endDate, section, errorMsg) {
     return result
   }
 }
-                </code>
-            </pre>
-            </div>
-            <div id="components-number" style="padding-top: 10px">
-                <h3>数字类工具</h3>
-                <p>1，分转元，保留两位小数</p>
-                <pre v-highlightA>
-                    <code>
+          </code>
+        </pre>
+      </div>
+      <div id="components-number" style="padding-top: 10px">
+        <h3>数字类工具</h3>
+        <p>1，分转元，保留两位小数</p>
+        <pre v-highlightA>
+          <code>
  /**
  * @param amount 传入金额
  * @returns {number}
@@ -227,11 +225,11 @@ function formatterFloat (amount) {
   }
   return returnMoney.toFixed(2)
 }
-                    </code>
-                </pre>
-                <p>2，截取数据保留规定位小数</p>
-                <pre v-highlightA>
-                    <code>
+          </code>
+        </pre>
+        <p>2，截取数据保留规定位小数</p>
+        <pre v-highlightA>
+          <code>
  /**
  * @param num 传入数字
  * @param decimal 规定小数位
@@ -247,14 +245,14 @@ function formatDecamal (num, decimal) {
   }
   return parseFloat(num).toFixed(decimal)
 }
-                    </code>
-                </pre>
-            </div>
-            <div id="components-array" style="padding-top: 10px">
-                <h3>数组类工具</h3>
-                <p>1，数组去重</p>
-                <pre v-highlightA>
-                    <code>
+          </code>
+        </pre>
+      </div>
+      <div id="components-array" style="padding-top: 10px">
+        <h3>数组类工具</h3>
+        <p>1，数组去重</p>
+        <pre v-highlightA>
+          <code>
 /**
  * @param arr 传入数组
  * @returns {array}
@@ -273,26 +271,25 @@ function formatDecamal (num, decimal) {
       return r;
     }
   }
-                    </code>
-                </pre>
-            </div>
-            <div id="components-cookie" style="padding-top: 10px">
-                <h3>cookie工具类</h3>
-                <p>1，设置cookie</p>
-                <pre v-highlightA>
-                    <code>
+          </code>
+        </pre>
+      </div>
+      <div id="components-cookie" style="padding-top: 10px">
+        <h3>cookie工具类</h3>
+        <p>1，设置cookie</p>
+        <pre v-highlightA>
+          <code>
 // 设置cookie,增加到vue实例方便全局调用
 function setCookie (cname, value, expiredays) {
   let exdate = new Date()
   exdate.setDate(exdate.getDate() + expiredays)
   document.cookie = cname + '=' + escape(value) + ((expiredays == null) ? '' : ';expires=' + exdate.toGMTString()) + 'domain=' + window.config.COOKIEULR
 }
-                    </code>
-                </pre>
-
-                <p>2，删除cookie</p>
-                <pre v-highlightA>
-                    <code>
+          </code>
+        </pre>
+        <p>2，删除cookie</p>
+        <pre v-highlightA>
+          <code>
 function delCookie (name) {
   let exp = new Date()
   exp.setTime(exp.getTime() - 1)
@@ -301,11 +298,11 @@ function delCookie (name) {
     document.cookie = name + '=' + cval + '; expires=' + exp.toGMTString() + '; path=/;'
   }
 }
-                    </code>
-                </pre>
-                <p>3，获取cookie</p>
-                <pre v-highlightA>
-                    <code>
+          </code>
+        </pre>
+        <p>3，获取cookie</p>
+        <pre v-highlightA>
+          <code>
 function getCookie (cname) {
   let name = cname + '='
   let decodedCookie = decodeURIComponent(document.cookie)
@@ -321,20 +318,20 @@ function getCookie (cname) {
   }
   return ''
 }
-                    </code>
-                </pre>
-            </div>
-        </div>
-        <div style="position: fixed; right: 5%;top: 35%;width: 10%">
-            <a-anchor>
-                <a-anchor-link href="#components-null" title="判空工具" />
-                <a-anchor-link href="#components-time" title="时间类工具" />
-                <a-anchor-link href="#components-number" title="数字转换工具" />
-                <a-anchor-link href="#components-array" title="数组类工具" />
-                <a-anchor-link href="#components-cookie" title="cookie工具类" />
-            </a-anchor>
-        </div>
+          </code>
+        </pre>
+      </div>
     </div>
+    <div style="position: fixed; right: 5%;top: 35%;width: 10%">
+      <a-anchor>
+        <a-anchor-link href="#components-null" title="判空工具" />
+        <a-anchor-link href="#components-time" title="时间类工具" />
+        <a-anchor-link href="#components-number" title="数字转换工具" />
+        <a-anchor-link href="#components-array" title="数组类工具" />
+        <a-anchor-link href="#components-cookie" title="cookie工具类" />
+      </a-anchor>
+    </div>
+  </div>
 </template>
 
 <script>

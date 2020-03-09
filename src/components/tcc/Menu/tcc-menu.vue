@@ -1,18 +1,17 @@
 <template>
-    <a-menu
-            :mode="mode"
-            :defaultSelectedKeys="['1']"
-            :defaultOpenKeys="['sub1']"
-            :theme="theme"
-            :style="{ height: '100%', borderRight: 0 }"
-    >
-        <template v-for="item in menuList">
-            <a-menu-item :key="item.key" v-if="!item.children">
-                <router-link :to="item.path"> <a-icon type="bars" /><span>{{item.title}}</span></router-link>
-            </a-menu-item>
-            <tcc-sub-menu v-else :menuInfo="item" :key="item.key"></tcc-sub-menu>
-        </template>
-    </a-menu>
+  <a-menu
+    :mode="mode"
+    :defaultSelectedKeys="['1']"
+    :defaultOpenKeys="['sub1']"
+    :theme="theme"
+    :style="{ height: '100%', borderRight: 0 }">
+    <template v-for="item in menuList">
+      <a-menu-item :key="item.key" v-if="!item.children">
+        <router-link :to="item.path"> <a-icon type="bars" /><span>{{item.title}}</span></router-link>
+      </a-menu-item>
+      <tcc-sub-menu v-else :menuInfo="item" :key="item.key"></tcc-sub-menu>
+    </template>
+  </a-menu>
 </template>
 
 <script>

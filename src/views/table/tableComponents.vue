@@ -1,22 +1,21 @@
 <template>
-    <div class="hello">
-        <tcc-table :defaultInit="defaultInit" @addRow="addRowData" @saveTable="saveData"
-                   @delTable="delData" @searchTable="searchData" @addFormChange="changeModal">
-            <template slot="searchItem">
-                <a-form-item label="搜索条件">
-                    <a-input v-model="defaultInit.t_form.searchVal"></a-input>
-                </a-form-item>
-            </template>
-            <template slot="operateBtn"></template>
-            <template slot="modalCont">
-                <a-col :span="24" v-for="(item, index) in defaultInit.addItem" :key="index">
-                    <a-form-item :label-col="{ span: 9 }" :wrapper-col="{ span: 15 }" :label="item.title">
-                        <a-input v-model="defaultInit.add_form[item.dataIndex]"></a-input>
-                    </a-form-item>
-                </a-col>
-            </template>
+  <div class="hello">
+    <tcc-table :defaultInit="defaultInit" @addRow="addRowData" @saveTable="saveData" @delTable="delData" @searchTable="searchData" @addFormChange="changeModal">
+      <template slot="searchItem">
+        <a-form-item label="搜索条件">
+          <a-input v-model="defaultInit.t_form.searchVal"></a-input>
+        </a-form-item>
+      </template>
+      <template slot="operateBtn"></template>
+      <template slot="modalCont">
+        <a-col :span="24" v-for="(item, index) in defaultInit.addItem" :key="index">
+          <a-form-item :label-col="{ span: 9 }" :wrapper-col="{ span: 15 }" :label="item.title">
+            <a-input v-model="defaultInit.add_form[item.dataIndex]"></a-input>
+          </a-form-item>
+        </a-col>
+      </template>
         </tcc-table>
-    </div>
+  </div>
 </template>
 
 <script>
