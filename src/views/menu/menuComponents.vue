@@ -2,7 +2,7 @@
   <div style="text-align: left">
     <code-layout title="内嵌菜单配置" :data="data">
       <template v-slot:describe>
-        说明：内嵌菜单组件 'tcc-sub-menu' 是内嵌于最外层菜单内的子菜单，通过该组件可配置多个层级菜单，减少代码冗余，需先引入组件'tcc-sub-menu'
+        说明：内嵌菜单组件 'tcc-sub-menu' 是内嵌于最外层菜单内的子菜单，通过该组件可配置多个层级菜单，减少代码冗余，需先引入组件'tcc-sub-menu'，该组件判断接收参数是否有子菜单，有则生成下一级子菜单，形成多级嵌套效果
       </template>
       <template v-slot:code-cont>
             <pre v-highlight-a>
@@ -16,7 +16,7 @@
         :style="{ height: '100%', borderRight: 0 }">
         &#60;template v-for="item in menuList">
           &#60;a-menu-item :key="item.key" v-if="!item.children">
-            &#60;router-link :to="item.path"> &#60;a-icon type="bars" />&#60;span>{{item.title}}&#60;/span>&#60;/router-link>
+            &#60;router-link :to="item.path"> &#60;a-icon type="bars" />&#60;span>menu-title&#60;/span>&#60;/router-link>
           &#60;/a-menu-item>
           &#60;tcc-sub-menu v-else :menuInfo="item" :key="item.key">&#60;/tcc-sub-menu>
         &#60;/template>
@@ -26,6 +26,9 @@
             </pre>
       </template>
     </code-layout>
+    <div class="download" style="margin-top: 20px">
+      <a-button><a href="../../../static/tcc-menu.zip" download="菜单组件代码">代码下载</a></a-button>
+    </div>
   </div>
 </template>
 
