@@ -26,9 +26,9 @@ export default {
   data: function () {
     return {
       menuList: [
-        { title: '首页', path: '/codeStandard', key: '1', type: 'home' },
+        { title: '首页', path: '/home/codeStandard', key: '1', type: 'home' },
         // { title: '工程模板', path: '/projectModule', key: '2' },
-        { title: '可视化', path: '/viewModule', key: '3', out: true, type: 'eye' }
+        { title: '可视化', path: 'http://192.168.254.36/tccfront/', key: '3', out: true, type: 'eye' }
       ],
       sideMenuList: [
         {

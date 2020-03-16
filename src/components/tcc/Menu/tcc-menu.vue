@@ -7,7 +7,9 @@
     :style="{ height: '100%', borderRight: 0 }">
     <template v-for="item in menuList">
       <a-menu-item :key="item.key" v-if="!item.children">
-        <router-link :to="item.path"> <a-icon :type="item.type||'bars'" /><span>{{item.title}}</span></router-link>
+        <router-link v-if="!item.out" :to="item.path"> <a-icon :type="item.type||'bars'" /><span>{{item.title}}</span></router-link>
+        <div v-else @click="_open"><a-icon :type="item.type||'bars'" /><span>{{item.title}}</span></div>
+<!--        <router-link> <a-icon :type="item.type||'bars'" /><span>{{item.title}}</span></router-link>-->
       </a-menu-item>
       <tcc-sub-menu v-else :menuInfo="item" :key="item.key"></tcc-sub-menu>
     </template>
@@ -36,6 +38,11 @@ export default {
       default: function () {
         return 'dark'
       }
+    }
+  },
+  methods: {
+    _open() {
+      window.location.href = 'http://192.168.254.36/tccfront/'
     }
   },
   components:{

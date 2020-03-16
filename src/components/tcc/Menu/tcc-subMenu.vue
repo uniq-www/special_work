@@ -7,7 +7,7 @@
     <template v-for="item in props.menuInfo.children">
       <a-menu-item v-if="!item.children" :key="item.key">
         <router-link :to="item.path">
-          <a-icon :type="item.type" />{{ item.title }}
+          <a-icon v-if="item.type" :type="item.type"/>{{ item.title }}
         </router-link>
       </a-menu-item>
       <sub-menu v-else :menuInfo="item" :key="item.key"/>
