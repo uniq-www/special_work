@@ -26,6 +26,10 @@
             </pre>
       </template>
     </code-layout>
+    <div>
+      <h3 style="margin-top: 10px">MenuInfo</h3>
+      <a-table :columns="menuInfoColumns" :dataSource="menuInfoData" :pagination="false" :rowKey="record => record.params"/>
+    </div>
     <div class="download" style="margin-top: 20px">
       <a-button><a href="../../../static/tcc-menu.zip" download="菜单组件代码">代码下载</a></a-button>
     </div>
@@ -42,6 +46,14 @@
           // {params: 'theme', describe: '配置菜单颜色(深色/浅色)', type: 'string: light/dark', default: 'dark'},
           {params: 'menuInfo', describe: '内嵌菜单接收参数', type: 'object', default: '{}'}
         ],
+        menuInfoColumns: [{title: '属性', dataIndex: 'params'},{title: '说明', dataIndex: 'describe'},{title: '类型', dataIndex: 'type'},{title: '默认值', dataIndex: 'default'}],
+        menuInfoData: [
+          {params: 'key', describe: '唯一标识符', type: 'number|string', default: ''},
+          {params: 'type', describe: '菜单图标', type: 'string', default: 'bars'},
+          {params: 'title', describe: '菜单标题', type: 'string', default: ''},
+          {params: 'children', describe: '子菜单数组', type: 'array', default: '[ ]'},
+          {params: 'path', describe: '跳转路由', type: 'string', default: ''},
+        ]
       }
     }
   }

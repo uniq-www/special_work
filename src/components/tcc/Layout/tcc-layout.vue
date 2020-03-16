@@ -9,9 +9,7 @@
                 <tcc-menu :menuList="sideMenuList"></tcc-menu>
             </a-layout-sider>
             <a-layout>
-                <a-layout-content
-                        :style="{ background: '#fff', padding: '24px', margin: 0 }"
-                >
+                <a-layout-content :style="{ background: '#fff', padding: '24px', margin: 0 }">
                     <router-view/>
                 </a-layout-content>
             </a-layout>
@@ -28,9 +26,9 @@ export default {
   data: function () {
     return {
       menuList: [
-        { title: '首页', path: '/codeStandard', key: '1' },
+        { title: '首页', path: '/codeStandard', key: '1', type: 'home' },
         // { title: '工程模板', path: '/projectModule', key: '2' },
-        { title: '可视化', path: '/viewModule', key: '3', out: true }
+        { title: '可视化', path: '/viewModule', key: '3', out: true, type: 'eye' }
       ],
       sideMenuList: [
         {
@@ -42,31 +40,34 @@ export default {
           title: '常用组件库',
           path: '/componentLibrary',
           key: '2',
+          type: 'shop',
           children: [
-            { title: '表单', path: '/home/formComponents', key: '2-1',
+            { title: '表单', path: '/home/formComponents', key: '2-1', type: 'file-text',
               children: [
                 {title: '表单demo', path: '/home/formComponents', key: '2-1-1'},
                 {title: '表单使用', path: '/home/formCode', key: '2-1-2'}
                 ]},
-            { title: '表格', path: '/home/tableComponents', key: '2-2',
+            { title: '表格', path: '/home/tableComponents', key: '2-2', type: 'table',
               children: [
                 {title: '表格demo', path: '/home/tableComponents', key: '2-2-1'},
                 {title: '表格使用', path: '/home/tableCode', key: '2-2-2'}
               ]
             },
-            { title: '内嵌菜单', path: '/home/menuComponents', key: '2-3'},
-            { title: '延时按钮', path: '/home/btnComponents', key: '2-4'}
+            { title: '内嵌菜单', path: '/home/menuComponents', key: '2-3', type: 'layout'},
+            { title: '延时按钮', path: '/home/btnComponents', key: '2-4', type: 'tag'}
           ]
-        },
-        {
-          title: '工具类',
-          path: '/home/toolsLibrary',
-          key: '3'
         },
         {
           title: 'JSON工具',
           path: '/jsonCheck',
-          key: '4'
+          key: '4',
+          type: 'interation'
+        },
+        {
+          title: '工具类',
+          path: '/home/toolsLibrary',
+          key: '3',
+          type: 'tool'
         }
       ]
     }
