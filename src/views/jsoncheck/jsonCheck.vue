@@ -70,9 +70,9 @@
                v-show="isHeaderField">
             <div class="title">HTTP 头字段</div>
             <a-tag v-for="(hfitem, hfindex) in headerFieldData"
-                   :key="hfindex"  >
+                   :key="hfindex" class="a-tag">
               {{hfitem.name}}:{{hfitem.key}}
-              <a-icon @click="deleteHeaderField(hfitem)"
+              <a-icon @click="deleteHeaderField(hfitem)" class="a-icon"
                       type="close" />
             </a-tag>
             <!--<json-viewer :value="requestParams"></json-viewer>-->
@@ -478,6 +478,19 @@
           .title{
             font-size: 18px;
             margin-bottom: 10px;
+          }
+          .a-tag{
+            max-width: 300px;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            padding-right: 15px;
+            position: relative;
+            .a-icon{
+              position: absolute;
+              right: 0;
+              top: 20%;
+            }
           }
         }
       }

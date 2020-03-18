@@ -58,13 +58,15 @@ export default {
     }
   },
   methods: {
-    addRowData () {
+    addRowData (cb) {
       this.defaultInit.addRow.key = this.defaultInit.data.length + 1;
       let addRow = JSON.parse(JSON.stringify(this.defaultInit.addRow));
       this.defaultInit.data.push(addRow)
+      cb()
     },
-    saveData (data) {
+    saveData (data, cb) {
       console.log(data)
+      cb()
     },
     delData (data) {
       console.log(data)

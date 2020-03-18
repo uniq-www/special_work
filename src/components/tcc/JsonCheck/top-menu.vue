@@ -3,19 +3,19 @@
     <a-menu v-model="current" mode="horizontal">
       <a-menu-item  @click="showDrawer" key="mail" > <a-icon type="align-left" /></a-menu-item>
       <!--<a-menu-item key="app" disabled> <a-icon type="appstore" />Navigation Two </a-menu-item>-->
-      <a-sub-menu>
-        <span slot="title" class="submenu-title-wrapper"
-        >增加身份认证</span
-        >
-        <a-menu-item-group title="HTTP 身份认证">
-          <a-menu-item key="setting:1">Basic 认证</a-menu-item>
-        </a-menu-item-group>
-        <a-divider />
-        <a-menu-item-group title="OAuth 协议">
-          <a-menu-item key="setting:3">OAuth 1.0认证</a-menu-item>
-          <a-menu-item key="setting:4">OAuth 2.0认证</a-menu-item>
-        </a-menu-item-group>
-      </a-sub-menu>
+<!--      <a-sub-menu>-->
+<!--        <span slot="title" class="submenu-title-wrapper"-->
+<!--        >增加身份认证</span-->
+<!--        >-->
+<!--        <a-menu-item-group title="HTTP 身份认证">-->
+<!--          <a-menu-item key="setting:1">Basic 认证</a-menu-item>-->
+<!--        </a-menu-item-group>-->
+<!--        <a-divider />-->
+<!--        <a-menu-item-group title="OAuth 协议">-->
+<!--          <a-menu-item key="setting:3">OAuth 1.0认证</a-menu-item>-->
+<!--          <a-menu-item key="setting:4">OAuth 2.0认证</a-menu-item>-->
+<!--        </a-menu-item-group>-->
+<!--      </a-sub-menu>-->
       <a-sub-menu>
         <span slot="title" class="submenu-title-wrapper"
         >增加HTTP头字段</span

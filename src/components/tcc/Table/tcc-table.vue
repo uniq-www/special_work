@@ -6,7 +6,7 @@
         <a-form-item>
           <a-button class="f_aBut" @click="queryData(true)">查询</a-button>
           <a-button class="f_aBut" style="margin-left: 10px" @click="addTable(1)">新增</a-button>
-          <a-button class="f_aBut" v-if="defaultInit.addType==='row'" type="primary" style="margin-left: 10px" @click="saveTable">保存</a-button>
+          <a-button class="f_aBut" v-if="defaultInit.addType==='row'" type="primary" style="margin-left: 10px" @click="saveTable()">保存</a-button>
           <slot name="operateBtn"></slot>
         </a-form-item>
       </a-form>
@@ -173,10 +173,10 @@ export default {
       } else if (this.defaultInit.addType === 'row') {
         // 新增为增加行方式
         if (type === 1) {
-          this.$emit('addRow');
-          setTimeout(() => {
+          this.$emit('addRow', () => {
             this.dataArr = this.defaultInit.data
-          }, 0)
+            console.log('12222', this.dataArr)
+          })
         } else {
           record.editable = true;
           this.addFlag = false;
@@ -208,23 +208,20 @@ export default {
       //   return item.editable
       // });
       if (this.defaultInit.addType === 'modal') {
-        this.$emit('saveTable', this.defaultInit.add_form)
-        setTimeout(() => {
+        this.$emit('saveTable', this.defaultInit.add_form, () => {
           this.addShow = false
-        }, 0)
+        })
       } else {
         if (record) {
-          this.$emit('saveTable', record)
-          setTimeout(() => {
+          this.$emit('saveTable', record, () => {
             record.editable = false
-          }, 0)
+          })
         } else {
-          this.$emit('saveTable', this.dataArr)
-          setTimeout(() => {
+          this.$emit('saveTable', this.dataArr, () => {
             this.dataArr.forEach(item => {
               item.editable = false
             })
-          }, 0)
+          })
         }
       }
     },
