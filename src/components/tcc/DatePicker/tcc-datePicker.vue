@@ -99,7 +99,6 @@ export default {
       }
     },
     changeDate (type, value) {
-      console.log(value)
       if (type === 'start') {
         this.startDate = value
       } else {
