@@ -43,11 +43,16 @@ export default new Router({
           name: 'tableCode',
           component: resolve => require(['@/views/table/tableCode.vue'], resolve)
         },
-        // {
-        //   path: 'menuComponents',
-        //   name: 'menuComponents',
-        //   component: resolve => require(['@/views/menu/menuComponents.vue'], resolve)
-        // },
+        {
+          path: 'dateComponents',
+          name: 'dateComponents',
+          component: resolve => require(['@/views/date/dateComponents.vue'], resolve)
+        },
+        {
+          path: 'dateCode',
+          name: 'dateCode',
+          component: resolve => require(['@/views/date/dateCode.vue'], resolve)
+        },
         {
           path: 'menuComponents',
           name: 'menuComponents',

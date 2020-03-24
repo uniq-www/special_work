@@ -53,8 +53,14 @@ export default {
                 {title: '表格使用', path: '/home/tableCode', key: '2-2-2'}
               ]
             },
-            { title: '内嵌菜单', path: '/home/menuComponents', key: '2-3', type: 'layout'},
-            { title: '延时按钮', path: '/home/btnComponents', key: '2-4', type: 'tag'}
+            { title: '日期', path: '/home/tableComponents', key: '2-3', type: 'calendar',
+              children: [
+                {title: '日期demo', path: '/home/dateComponents', key: '2-3-1'},
+                {title: '日期使用', path: '/home/dateCode', key: '2-3-2'}
+              ]
+            },
+            { title: '内嵌菜单', path: '/home/menuComponents', key: '2-4', type: 'layout'},
+            { title: '延时按钮', path: '/home/btnComponents', key: '2-5', type: 'tag'}
           ]
         },
         {
