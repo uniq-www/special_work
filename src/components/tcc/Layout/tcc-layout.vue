@@ -1,18 +1,17 @@
 <template>
     <a-layout id="components-layout-demo-fixed" theme="light">
-        <a-layout-header :style="{ position: 'fixed', zIndex: 1, width: '100%' }">
-            <div class="logo" ><h2 style="color: #ffffff">TCC前端视窗</h2></div>
+      <a-layout-sider width="200" class="sider-cont" collapsible :trigger="null" v-model="collapsed">
+        <a-icon class="trigger" :type="collapsed ? 'menu-unfold' : 'menu-fold'" @click="triggerMenu"/>
+        <div class="logo" ><h2 style="color: #ffffff" v-show="!collapsed">TCC前端视窗</h2></div>
+        <tcc-menu :menuList="sideMenuList"></tcc-menu>
+      </a-layout-sider>
+        <a-layout style="position: relative;overflow-y: hidden">
+          <a-layout-header class="header-cont">
             <tcc-menu :mode="'horizontal'" :menuList="menuList" style="line-height: 64px"></tcc-menu>
-        </a-layout-header>
-        <a-layout style="margin-top: 64px">
-            <a-layout-sider width="200" style="z-index: 500" collapsible>
-                <tcc-menu :menuList="sideMenuList"></tcc-menu>
-            </a-layout-sider>
-            <a-layout>
-                <a-layout-content :style="{ background: '#fff', padding: '24px', margin: 0 }">
-                    <router-view/>
-                </a-layout-content>
-            </a-layout>
+          </a-layout-header>
+          <a-layout-content class="main-cont">
+            <router-view/>
+          </a-layout-content>
         </a-layout>
     </a-layout>
 </template>
@@ -30,6 +29,7 @@ export default {
         // { title: '工程模板', path: '/projectModule', key: '2' },
         { title: '可视化', path: 'http://192.168.254.36/tccfront/', key: '3', out: true, type: 'eye' }
       ],
+      collapsed: false,
       sideMenuList: [
         {
           title: '代码规范文档',
@@ -78,15 +78,73 @@ export default {
       ]
     }
   },
-  methods: {}
+  methods: {
+    triggerMenu() {
+      this.collapsed = !this.collapsed
+    }
+  }
 }
 </script>
 
-<style scoped>
+<style scoped lang="less">
 #components-layout-demo-fixed{
+  position: relative;
+  height: 100%;
+  overflow: hidden;
+  .logo{
+    height: 60px;
+    line-height: 60px;
+    /*margin: 16px;*/
+  }
+  .sider-cont{
+    z-index: 501;
     height: 100%;
+    .trigger{
+      color: #ffffff;
+      font-size: 20px;
+      position: absolute;
+      right: -30px;
+      top: 20px;
+    }
+    ul{
+      overflow-y: auto;
+      height: 100%;
+    }
+    ul::-webkit-scrollbar{
+      width: 4px;
+    }
+    ul::-webkit-scrollbar-thumb {
+      border-radius: 10px;
+      -webkit-box-shadow: inset 0 0 5px rgba(200, 215, 209, 0.2);
+      background: rgba(200, 215, 209, 0.2);
+    }
+    ul::-webkit-scrollbar-track {
+      -webkit-box-shadow: inset 0 0 5px rgba(34, 34, 34, 0.86);
+      border-radius: 0;
+      background: rgba(34, 34, 34, 0.84);
+    }
+  }
 }
-.ant-layout-content {
-    min-height: initial;
+.header-cont{
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 64px;
+  z-index: 500;
 }
+.main-cont{
+  position: absolute;
+  top: 64px;
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  padding: 24px;
+  margin: 0;
+  overflow-y: auto;
+}
+
+/*.ant-layout-content {*/
+/*    min-height: initial;*/
+/*}*/
 </style>

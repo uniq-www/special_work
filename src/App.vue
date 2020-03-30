@@ -29,12 +29,4 @@ export default {
     text-align: center;
     color: #2c3e50;
 }
-#components-layout-demo-fixed .logo {
-    width: 150px;
-    height: 100%;
-    /*background: rgba(255, 255, 255, 0.2);*/
-    /*margin: 16px 24px 16px 0;*/
-    float: left;
-    color: #ffffff;
-}
 </style>

@@ -3,8 +3,7 @@
     :mode="mode"
     :defaultSelectedKeys="['1']"
     :defaultOpenKeys="['sub1']"
-    :theme="theme"
-    :style="{ height: '100%', borderRight: 0 }">
+    :theme="theme">
     <template v-for="item in menuList">
       <a-menu-item :key="item.key" v-if="!item.children">
         <router-link v-if="!item.out" :to="item.path"> <a-icon :type="item.type||'bars'" /><span>{{item.title}}</span></router-link>
